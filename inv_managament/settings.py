@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'inv_managament.wsgi.application'
+WSGI_APPLICATION = 'inv_managament.wsgi.app'
 
 
 # Database
