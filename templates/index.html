@@ -1,0 +1,34 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-between mb-3">
+        <h3>Stock List</h3>
+        <a href="{% url 'stock_create' %}" class="btn btn-success">Add New Stock</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.item_name }}</td>
+                    <td>{{ stock.quantity }}</td>
+                    <td>
+                        <a href="{% url 'stock_update' stock.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'stock_delete' stock.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">No stocks available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
